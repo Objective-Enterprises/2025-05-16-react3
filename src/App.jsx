@@ -8,24 +8,41 @@ import ThreadPage from "./pages/User/ThreadPage";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
+import CreateThreadForm from "./components/Forms/CreateThreadForm";
 
 function App() {
+  function handleClose() {
+    console.log('close')
+  }
   return (
-    <BrowserRouter>
-      <div className="app-layout">
-        <Header />
-        <div className="app-container">
-          <main className="main-center-content">
-            <Routes>
-              // Your code here: define routes for Login, Register, Home and
-              ThreadPage
-              <Route path="*" element={<Navigate to="/home" replace />} />
-            </Routes>
-          </main>
+    <AuthProvider>
+      <BrowserRouter>
+        <div className="app-layout">
+          <Header />
+          <div className="app-container">
+            <main className="main-center-content">
+              <Routes>
+                <Route
+                  path="/register"
+                  element={<Register />}
+                />
+                <Route
+                  path="/login"
+                  element={<Login />}
+                />
+                <Route
+                  path="*"
+                  element={
+                    <Navigate to="/home" replace />
+                  }
+                />
+              </Routes>
+            </main>
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+    </AuthProvider>
   );
 }
 

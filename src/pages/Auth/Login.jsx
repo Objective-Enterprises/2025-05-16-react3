@@ -12,6 +12,7 @@ function Login() {
   const [info, setInfo] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
+  const { loginUser } = useAuth()
 
   useEffect(() => {
     // Check if user was redirected due to expired token
@@ -25,7 +26,11 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    //Your Code Here
+    e.preventDefault();
+    const data = await login(form)
+    console.log('data', data)
+    loginUser(data)
+    navigate('/home')
   };
 
   return (
