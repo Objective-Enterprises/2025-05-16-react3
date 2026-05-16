@@ -35,7 +35,14 @@ function Header() {
         <div className="d-flex align-items-center">
           {token ? (
             <>
-              <span className="user-name me-3">{user?.name || "User"}</span>
+              <Button
+                className="btn-header btn-outline"
+                onClick={() => {
+                  navigate('/profile');
+                }}
+              >
+                View Profile
+              </Button>
               <Button className="btn-header btn-primary" onClick={handleLogout}>
                 Logout
               </Button>

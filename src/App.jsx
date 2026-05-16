@@ -9,6 +9,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import { AuthProvider } from "./context/AuthContext";
 import "./App.css";
 import CreateThreadForm from "./components/Forms/CreateThreadForm";
+import Profile from "./pages/User/Profile";
 
 function App() {
   function handleClose() {
@@ -35,6 +36,14 @@ function App() {
                   element={
                     <PrivateRoute>
                       <Home />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <PrivateRoute>
+                      <Profile />
                     </PrivateRoute>
                   }
                 />
