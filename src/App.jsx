@@ -31,6 +31,14 @@ function App() {
                   element={<Login />}
                 />
                 <Route
+                  path="/home"
+                  element={
+                    <PrivateRoute>
+                      <Home />
+                    </PrivateRoute>
+                  }
+                />
+                <Route
                   path="*"
                   element={
                     <Navigate to="/home" replace />

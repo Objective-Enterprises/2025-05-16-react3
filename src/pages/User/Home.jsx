@@ -11,7 +11,15 @@ export default function Home() {
 
   useEffect(() => {
     const loadThreads = async () => {
-      // Your Code Here
+      try {
+        setLoading(true);
+        const data = await fetchRecentThreads();
+        console.log('data', data)
+        setThreads(data);
+      } catch (error) {
+        setError(error.message);
+      }
+      setLoading(false);
     };
 
     loadThreads();
